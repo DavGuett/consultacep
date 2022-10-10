@@ -9,9 +9,14 @@ function consultarEndereco() {
   console.log(url);
 
   fetch(url).then((response) =>
-    response
-      .json()
-      .then((data) => (resultado.innerHTML = `<p>${data.bairro}</p>`))
+    response.json().then(
+      (dados) =>
+        (resultado.innerHTML = `
+        <p>Unidade Federal: ${dados.uf}</p>
+        <p>Cidade: ${dados.localidade}</p>
+        <p>Bairro: ${dados.bairro}</p>
+        <p>Logradouro: ${dados.logradouro}</p>`)
+    )
   );
 }
 
